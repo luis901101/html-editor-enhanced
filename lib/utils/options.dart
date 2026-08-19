@@ -254,8 +254,10 @@ class HtmlToolbarOptions {
       mediaLinkInsertInterceptor;
 
   /// Allows you to intercept any image/video/audio files being inserted into the editor.
-  /// The function passes the PlatformFile class, which contains all the file data
-  /// including name, size, type, Uint8List bytes, etc.
+  /// The function passes the PlatformFile class, which exposes the file's
+  /// `name` and `uri`, plus `length()`/`readAsBytes()`/`readAsByteStream()` to
+  /// read the content on demand. As of file_picker 12 the bytes are no longer
+  /// loaded eagerly, so call `readAsBytes()` when you need them.
   ///
   /// Return a bool to tell the plugin if it should continue with its own handler
   /// or if you want to handle the image/video/audio upload by yourself.
@@ -308,8 +310,10 @@ class HtmlToolbarOptions {
   /// The package does not have a built in handler for these files, so if you use
   /// the button you should provide this callback.
   ///
-  /// The function passes the PlatformFile class, which contains all the file data
-  /// including name, size, type, Uint8List bytes, etc.
+  /// The function passes the PlatformFile class, which exposes the file's
+  /// `name` and `uri`, plus `length()`/`readAsBytes()`/`readAsByteStream()` to
+  /// read the content on demand. As of file_picker 12 the bytes are no longer
+  /// loaded eagerly, so call `readAsBytes()` when you need them.
   final void Function(PlatformFile)? onOtherFileUpload;
 
   /// Allows you to set the allowed extensions when a user inserts a file other
