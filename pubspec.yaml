@@ -17,11 +17,13 @@ dependencies:
   visibility_detector: ^0.4.0+2
   # plugin to get when the keyboard is hidden via back (Android)
   # or "done" (iOS) to reset the editor's height
-  flutter_keyboard_visibility: ^6.0.0
+  flutter_keyboard_visibility: ^7.0.1
   # plugin to show a color picker for foreground/highlight color
+  # kept on 3.x: 4.x is built on the standalone material_ui package and
+  # crashes inside apps that still use package:flutter/material.dart
   flex_color_picker: ^3.8.0
   # plugin to get files from filesystem
-  file_picker: ^12.0.0
+  file_picker: ^13.0.0
   # plugin to show a scrollable number picker for inserting tables
   numberpicker: ^2.1.2
   # plugin to allow dropdowns and dialogs to be interactable when displaying over the editor

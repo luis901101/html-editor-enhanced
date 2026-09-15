@@ -117,7 +117,7 @@ Add `html_editor_enhanced: ^2.5.0` as dependency to your pubspec.yaml.
 
 Make sure to declare internet support inside `AndroidManifest.xml`: `<uses-permission android:name="android.permission.INTERNET"/>`
 
-Additional setup is required on iOS to allow the user to pick files from storage. See [here](https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#--ios) for more details. Note that `file_picker` 12 requires a minimum iOS deployment target of `14.0`.
+Additional setup is required on iOS to allow the user to pick files from storage. See [here](https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#--ios) for more details. Note that `file_picker` 13 requires a minimum iOS deployment target of `14.0`.
 
 For images, the package uses `FileType.image`, for video `FileType.video`, for audio `FileType.audio`, and for any other file `FileType.any`. You can just complete setup for the specific buttons you plan to enable in the editor.
 

@@ -255,9 +255,10 @@ class HtmlToolbarOptions {
 
   /// Allows you to intercept any image/video/audio files being inserted into the editor.
   /// The function passes the PlatformFile class, which exposes the file's
-  /// `name` and `uri`, plus `length()`/`readAsBytes()`/`readAsByteStream()` to
-  /// read the content on demand. As of file_picker 12 the bytes are no longer
-  /// loaded eagerly, so call `readAsBytes()` when you need them.
+  /// `name`, `extension` and `uri`, plus `length()`/`readAsBytes()`/
+  /// `readAsByteStream()` to read the content on demand. The bytes are not
+  /// loaded eagerly, so call `readAsBytes()` when you need them. `length()`
+  /// returns null when the size cannot be determined.
   ///
   /// Return a bool to tell the plugin if it should continue with its own handler
   /// or if you want to handle the image/video/audio upload by yourself.
@@ -311,9 +312,10 @@ class HtmlToolbarOptions {
   /// the button you should provide this callback.
   ///
   /// The function passes the PlatformFile class, which exposes the file's
-  /// `name` and `uri`, plus `length()`/`readAsBytes()`/`readAsByteStream()` to
-  /// read the content on demand. As of file_picker 12 the bytes are no longer
-  /// loaded eagerly, so call `readAsBytes()` when you need them.
+  /// `name`, `extension` and `uri`, plus `length()`/`readAsBytes()`/
+  /// `readAsByteStream()` to read the content on demand. The bytes are not
+  /// loaded eagerly, so call `readAsBytes()` when you need them. `length()`
+  /// returns null when the size cannot be determined.
   final void Function(PlatformFile)? onOtherFileUpload;
 
   /// Allows you to set the allowed extensions when a user inserts a file other

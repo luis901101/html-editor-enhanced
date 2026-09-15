@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -39,25 +38,6 @@ String getRandString(int len) {
   var random = Random.secure();
   var values = List<int>.generate(len, (i) => random.nextInt(255));
   return base64UrlEncode(values);
-}
-
-/// Convenience accessors for the [PlatformFile] instances handed to
-/// [HtmlToolbarOptions.mediaUploadInterceptor] and
-/// [HtmlToolbarOptions.onOtherFileUpload].
-///
-/// file_picker 12 turned [PlatformFile] into an abstract interface that only
-/// exposes [PlatformFile.name], [PlatformFile.uri] and async readers, so the
-/// old synchronous `extension` getter no longer exists. Use
-/// [PlatformFile.length] for the size and [PlatformFile.readAsBytes] for the
-/// content.
-extension PlatformFileUtils on PlatformFile {
-  /// The file extension without the leading dot (eg `jpeg` or `mp4`), or null
-  /// when [name] carries no extension.
-  String? get extension {
-    var parts = name.split('.');
-    if (parts.length < 2 || parts.last.isEmpty) return null;
-    return parts.last;
-  }
 }
 
 /// Class that helps pass editor settings to the [onSettingsChange] callback
@@ -132,16 +112,17 @@ class ExpandIconDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final size = _size ?? 0;
     return Container(
-      height: _size,
-      width: _size,
+      height: size,
+      width: size,
       color: Theme.of(context).scaffoldBackgroundColor,
       child: IconButton(
         constraints: BoxConstraints(
-          maxHeight: _size!,
-          maxWidth: _size!,
+          maxHeight: size,
+          maxWidth: size,
         ),
-        iconSize: _size! * 3 / 5,
+        iconSize: size * 3 / 5,
         icon: Icon(
           _isExpanded ? Icons.expand_less : Icons.expand_more,
           color: Colors.grey,
