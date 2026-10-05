@@ -15,6 +15,8 @@ dependencies:
   material_ui: ^1.5.0
   # webview plugin
   flutter_inappwebview: ^6.1.5
+  # browser APIs for the Web implementation (replaces dart:html)
+  web: ^1.1.0
   # plugin to get webview's visible fraction for keyboard height adjustment
   visibility_detector: ^0.4.0+2
   # plugin to get when the keyboard is hidden via back (Android)
