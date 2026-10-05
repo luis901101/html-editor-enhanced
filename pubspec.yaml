@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Material widgets, now a standalone package outside the Flutter SDK
+  material_ui: ^1.5.0
   # webview plugin
   flutter_inappwebview: ^6.1.5
   # plugin to get webview's visible fraction for keyboard height adjustment
@@ -19,9 +21,7 @@ dependencies:
   # or "done" (iOS) to reset the editor's height
   flutter_keyboard_visibility: ^7.0.1
   # plugin to show a color picker for foreground/highlight color
-  # kept on 3.x: 4.x is built on the standalone material_ui package and
-  # crashes inside apps that still use package:flutter/material.dart
-  flex_color_picker: ^3.8.0
+  flex_color_picker: ^4.0.0
   # plugin to get files from filesystem
   file_picker: ^13.0.0
   # plugin to show a scrollable number picker for inserting tables

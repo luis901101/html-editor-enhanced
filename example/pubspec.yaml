@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Material widgets, now a standalone package outside the Flutter SDK
+  material_ui: ^1.5.0
+
   html_editor_enhanced:
     # When depending on this package from a real application you should use:
     #   html_editor_enhanced: ^x.y.z

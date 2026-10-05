@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Options that modify the editor and its behavior
 class HtmlEditorOptions {

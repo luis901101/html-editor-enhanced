@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:html_editor_enhanced/utils/utils.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 
@@ -2181,6 +2181,13 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                     builder: (BuildContext context) {
                       return PointerInterceptor(
                         child: StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                          // numberpicker's default styles come from the SDK Material theme,
+                          // which a material_ui MaterialApp doesn't provide, so pass them
+                          // explicitly from the material_ui theme
+                          final theme = Theme.of(context);
+                          final textStyle = theme.textTheme.bodyMedium;
+                          final selectedTextStyle =
+                              theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.secondary);
                           return AlertDialog(
                             title: Text('Insert Table'),
                             scrollable: true,
@@ -2192,6 +2199,8 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                                     value: currentRows,
                                     minValue: 1,
                                     maxValue: 10,
+                                    textStyle: textStyle,
+                                    selectedTextStyle: selectedTextStyle,
                                     onChanged: (value) => setState(() => currentRows = value),
                                   ),
                                   Text('x'),
@@ -2199,6 +2208,8 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                                     value: currentCols,
                                     minValue: 1,
                                     maxValue: 10,
+                                    textStyle: textStyle,
+                                    selectedTextStyle: selectedTextStyle,
                                     onChanged: (value) => setState(() => currentCols = value),
                                   ),
                                 ]),

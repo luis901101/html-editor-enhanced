@@ -119,6 +119,8 @@ Make sure to declare internet support inside `AndroidManifest.xml`: `<uses-permi
 
 Additional setup is required on iOS to allow the user to pick files from storage. See [here](https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#--ios) for more details. Note that `file_picker` 13 requires a minimum iOS deployment target of `14.0`.
 
+The package is built on [`package:material_ui`](https://pub.dev/packages/material_ui), the standalone Material package, which requires Flutter `3.47` / Dart `3.13` or later. The editor looks up `Theme`, its `Material` ancestor and `MaterialLocalizations` through `material_ui`, so your app's `MaterialApp` (and the `Scaffold` or `Material` around the editor) must come from `material_ui` too (see its [migration guide](https://github.com/flutter/packages/tree/main/packages/material_ui#migrating-existing-code-to-this-package)). If other dependencies of your app still use `package:flutter/material.dart`, `material_ui` provides `MaterialUiCompatibilityBridge`, a temporary (deprecated) migration utility, to bridge the two while they are migrated.
+
 For images, the package uses `FileType.image`, for video `FileType.video`, for audio `FileType.audio`, and for any other file `FileType.any`. You can just complete setup for the specific buttons you plan to enable in the editor.
 
 #### v2.0.0 Migration Guide:
@@ -822,11 +824,10 @@ class _HtmlEditorExampleState extends State<HtmlEditorExample> {
 <details><summary>Example code</summary>
 
 ```dart
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
+import 'package:material_ui/material_ui.dart';
 
 class _ExampleState extends State<Example> {
   final HtmlEditorController controller = HtmlEditorController();
